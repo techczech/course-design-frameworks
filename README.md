@@ -1,3 +1,12 @@
+---
+name: "Course Design Frameworks"
+description: "Makes course-design frameworks operational through checklists, matrices and activity planners."
+categories: [content-distribution, web-app, built-by-ai]
+updated: 2026-07-16
+deployments:
+  Appsite:
+    "Course Design Frameworks": https://coursedesignframeworks.edutools.fyi/
+---
 # Course Design Frameworks
 
 A modern, interactive toolkit for online course development. This web application digitizes frameworks by Dominik Lukeš, offering faculty and instructional designers a suite of tools—including checklists, engagement matrices, and activity planners—to evaluate and enhance their online course designs.
