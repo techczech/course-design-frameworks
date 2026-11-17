@@ -1,3 +1,4 @@
+import { CiteThisPage } from '../citation/CiteThisPage';
 import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
 import { Section, ContentBlock, MatrixData, ChecklistCategory } from '../types';
@@ -176,6 +177,7 @@ export const SectionView: React.FC<SectionViewProps> = ({ section }) => {
         {(section.type === 'matrix' || section.type === 'planner') && (
             <MatrixRenderer data={section.data as MatrixData} type={section.type} />
         )}
+      {section.id === 'about' && <CiteThisPage />}
       </main>
     </div>
   );
