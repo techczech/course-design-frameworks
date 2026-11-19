@@ -1,24 +1,28 @@
 ---
-title: course-design-frameworks Pages preview deployment
+title: course-design-frameworks Workers preview deployment
 date: 2026-11-19
 register: FOR AGENTS
 ---
 
-# Pages preview deployment
+# Workers static-asset preview
 
-Planned Cloudflare Pages project: `course-design-frameworks`. Preview unavailable: project creation was refused on 19 November 2026 because the account has reached its Pages project quota (Cloudflare error 8000027). The intended address is https://course-design-frameworks.pages.dev/ .
-Production canonical and citation URL: https://coursedesignframeworks.edutools.fyi/ .
-This phase attaches no custom domains and changes no DNS or Cloud Run services.
+Worker: `course-design-frameworks`. Preview: https://course-design-frameworks.czechly.workers.dev/
+Production canonical and citation URL: https://coursedesignframeworks.edutools.fyi/
+Branch: `pages-preview`. Build output: `dist/`.
 
-From a clean checkout with no build secrets:
+The Worker name was confirmed unused before creation. Pages project creation was blocked by the account's 100-project quota. This is a separate workers.dev preview; existing Pages projects and Workers are preserved. DNS, custom domains and Cloud Run remain unchanged.
+
+From this branch, without build secrets:
 
 ```sh
-npm install
+npm ci
 npm run build
-env -u CLOUDFLARE_API_TOKEN CLOUDFLARE_ACCOUNT_ID=b6ae5bced06492ee6f0c8f92776804da npx wrangler@4 pages deploy dist --project-name course-design-frameworks --branch main
+env -u CLOUDFLARE_API_TOKEN CLOUDFLARE_ACCOUNT_ID=b6ae5bced06492ee6f0c8f92776804da npx wrangler@4 deploy
 ```
 
-When creating a missing project with Wrangler 4.165, use `pages project create <name> --production-branch main --force` to target the original Pages API. Once the project exists, omit `--force` from deploy commands. The project's pages.dev address is for review only; production switching requires separate approval.
+`wrangler.jsonc` serves only static build assets with SPA navigation fallback, `workers_dev: true`, and no routes or custom domains. Vite's key replacements are empty strings; no owner key is included.
+
+AI feature needs a server: no.
 
 No server-held AI key is required by this app.
 
